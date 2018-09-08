@@ -6,6 +6,7 @@ import SDAcademy.mobile.shop.entity.Phone;
 import SDAcademy.mobile.shop.entity.User;
 import SDAcademy.mobile.shop.repository.PhoneRepository;
 import SDAcademy.mobile.shop.service.PhoneService;
+import SDAcademy.mobile.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +24,13 @@ public class UserController {
 
     // need to inject our customer service
     @Autowired
-    private userService userService;
+    private UserService userService;
 
     @GetMapping("/list")
     public String listCustomers(Model theModel) {
 
         // get customers from the service
-        List<User> theUsers = userService.getUsers();
+        List<User> theUsers = userService.getUser();
 
         // add the customers to the model
         theModel.addAttribute("users", theUsers);
@@ -41,7 +42,7 @@ public class UserController {
     public String showFormForAdd(Model theModel) {
 
         // create model attribute to bind form data
-        User theUsers = new USer();
+        User theUsers = new User();
 
         theModel.addAttribute("user", theUsers);
 
@@ -49,7 +50,7 @@ public class UserController {
     }
 
     @PostMapping("/saveuser")
-    public String saveCustomer(@ModelAttribute("user") USer theUser) {
+    public String saveCustomer(@ModelAttribute("user") User theUser) {
 
         // save the customer using our service
         userService.saveUser(theUser);
@@ -61,7 +62,7 @@ public class UserController {
                                     Model theModel) {
 
         // get the customer from our service
-        User theUser = phoneService.getPhone(theId);
+        User theUser = userService.getUser(theId);
 
 
         // set customer as a model attribute to pre-populate the form

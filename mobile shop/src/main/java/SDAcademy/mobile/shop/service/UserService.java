@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface UserService {
 
-    public List<User> getPhones();
+    public List<User> getUser();
 
-    public void savePhone(User theUser);
+    public void saveUser(User theUser);
 
-    public Phone getUSer(int theId);
+    public User getUser(int theId);
 
     public void deleteUser(int theId);
 

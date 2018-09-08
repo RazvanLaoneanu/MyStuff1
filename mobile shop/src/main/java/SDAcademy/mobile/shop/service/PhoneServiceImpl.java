@@ -17,10 +17,10 @@ public class PhoneServiceImpl implements PhoneService {
 
     @Override
     public List<Phone> getPhones() {
-      List<Phone> phones = new ArrayList<>();
+        List<Phone> phones = new ArrayList<>();
         phoneRepository.findAll().forEach(phones::add);
 
-      return phones;
+        return phones;
     }
 
     @Override
